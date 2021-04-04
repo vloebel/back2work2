@@ -1,0 +1,113 @@
+///////////////////////////////////////////
+/////////////////////////////////
+// Get all the users who could be invited to meetings and
+// all the people already invited to this meeting (id)
+// route is: api/meetings/invite/:meeting_id
+
+
+router.get('/invite/:id', withAuth, (req, res) => {
+  console.log("======================");
+
+  // 1: Get the meeting info to pass to handlebars
+  // 2: Get all the participants who have already been invited
+  // 3: Get all the users (who have not been invited)
+
+  Meeting.findOne({
+    where: {
+      id: req.params.id,
+    },
+    attributes: ["id", "date", "start", "duration", "meeting_name", "topic"],
+  })
+
+    .then((mtgData) => {
+
+      console.log(JSON.stringify(mtgData));
+      return
+
+      let meetingObj = {
+        organizerId: req.session.user_id,
+        meetingId: element.dataValues.id,
+        date: element.dataValues.date,
+        start: element.dataValues.start,
+        duration: element.dataValues.duration,
+        meeting_name: element.dataValues.meeting_name,
+        topic: element.dataValues.topic
+      };
+      // inside the first "then" we have our meetingObj
+      // (2) Get the participants who have been invited
+      //
+      Participant.findAll({
+        where: {
+          meeting_id: req.params.id,
+        },
+        attributes: ["user_id", "meeting_id", "accepted"],
+        include: [
+          {
+            model: User,
+            attributes: ["firstname", "lastname"],
+          },
+        ],
+      })
+        // inside the second "then" we have meetingObj and mappedParticipantArray
+        .then((participantData) => {
+          // console.log(JSON.stringify(participantData));
+
+          var mappedParticipantArray = participantData
+            .map((element, i) => {
+
+              // use the "accepted" attribute to set a
+              // text string to pass into handlebars
+              // must be this EXACT text because we use it
+              // to convert back to boolean in handlebars.js
+              let acceptedStatus = "Not Sure";
+              switch (element.dataValues.accepted) {
+                case (true):
+                  acceptedStatus = "Accepted";
+                  break;
+                case (false):
+                  acceptedStatus = "Declined"
+                  break;
+              }
+
+              var participantArray = {
+                participantId: element.dataValues.user_id,
+                meetingId: element.dataValues.meeting_id,
+                accepted: acceptedStatus,
+              };
+              return participantArray;
+            })
+
+          // inside the second .then we now have
+          // meetingObj & mappedParticipantArray, so
+          // (3) Get all the users who are not the organizer
+          // AND who are not already participants
+          User.findAll({
+            where: {
+              organizer_id: { $ne: req.session.user_id }
+            },
+            attributes: ["id", "firstname", "lastname"],
+          })
+            .then((userData) => {
+              var mappedUserArray = userData
+                .map((element, i) => {
+                  var userArray = {
+                    id: element.dataValues.id,
+                    firstname: element.dataValues.firstname,
+                    lastname: element.dataValues.lastname
+                  };
+                  // only return users who are not already participants
+                  if (!mappedParticipantArray.some(el.user_name === userArray.id))
+                    return userArray;
+                });
+
+              res.render("invite-people", {
+                meetingObj,
+                participantObj: mappedParticipantArray,
+                userObj: mappedUserArray,
+                loggedIn: true
+              });
+            })
+
+        })
+    });
+});

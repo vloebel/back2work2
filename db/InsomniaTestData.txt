@@ -1,0 +1,174 @@
+// This is just some test data to cut and paste into insomnia
+// We can set up proper seeds when I know how to put in a date
+
+// USERS - post one at a time
+{
+  "firstname": "Harry",
+  "lastname": "Barry",
+  "email": "HarryBarry@fuzzzz.com",
+  "password": "1234",
+  "available": "MTWRF"
+}
+{
+  "firstname": "Lori",
+  "lastname": "Chang",
+  "email": "LChang491@fuzzzz.com",
+  "password": "1234",
+  "available": "MTWRF"
+}
+{
+  "firstname": "Emir",
+  "lastname": "Abacı",
+  "email": "Emir9Abaci@fuzzzz.com",
+  "password": "1234",
+  "available": "MTWRF"
+}
+{
+  "firstname": "John",
+  "lastname": "Button",
+  "email": "buttonupjohn@fuzzzz.com",
+  "password": "1234",
+  "available": "MTWRF"
+}
+{
+  "firstname": "Tash",
+  "lastname": "Frankel",
+  "email": "TashTeeFrankel@fuzzzz.com",
+  "password": "1234",
+  "available": "MTWRF"
+}
+{
+  "firstname": "Vicky",
+  "lastname": "Loebel",
+  "email": "vloebel@hotmail.com",
+  "password": "1234",
+  "available": "MWF"
+}
+// MEETINGS - post one at a time
+{
+  "date": "2021-03-27",
+  "start": "9",
+  "end": "10",
+  "organizer_id": "1",
+  "meeting_name":"Test and Talk",
+  "topic":"Let's review where we are and talk about extensions."
+}
+{
+  "date": "2021-03-29",
+  "start": "14",
+  "end": "15",
+  "organizer_id": "1"
+  "meeting_name":"Project 2 design",
+  "topic":"Review front end layout and interfaces"
+}
+{
+  "date": "2021-03-31",
+  "start": "13",
+  "end": "15",
+  "organizer_id": "2",
+  "meeting_name":"Presentation Prep",
+  "topic":"Split up tasks for presentation slides"
+
+MEETINGS:
+localhost:3002/api/participants/?qtype=meetings&qid=4
+localhost:3002/api/participants/?qtype=participants&qid=4
+
+{
+  "user_id": 1,
+  "meeting_id":"1"
+}
+{
+  "user_id": 1,
+  "meeting_id":"2"
+}
+{
+  "user_id": 2,
+  "meeting_id":"1"
+}
+{
+  "user_id": 2,
+  "meeting_id":"2"
+}
+{
+  "user_id": 3,
+  "meeting_id":"1"
+}
+{
+  "user_id": 1,
+  "meeting_id":"3"
+}
+----------------------
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "meeting_id": 1,
+    "accepted": true
+  },
+  {
+    "id": 2,
+    "user_id": 5,
+    "meeting_id": 1,
+    "accepted": false
+  },
+  {
+    "id": 3,
+    "user_id": 2,
+    "meeting_id": 2,
+    "accepted": true
+  },
+  {
+    "id": 4,
+    "user_id": 8,
+    "meeting_id": 2,
+    "accepted": null
+  },
+  {
+    "id": 5,
+    "user_id": 8,
+    "meeting_id": 3,
+    "accepted": true
+  },
+  {
+    "id": 6,
+    "user_id": 6,
+    "meeting_id": 3,
+    "accepted": false
+  },
+  {
+    "id": 7,
+    "user_id": 6,
+    "meeting_id": 4,
+    "accepted": null
+  },
+  {
+    "id": 8,
+    "user_id": 4,
+    "meeting_id": 4,
+    "accepted": false
+  },
+  {
+    "id": 9,
+    "user_id": 4,
+    "meeting_id": 5,
+    "accepted": true
+  }
+  {
+    "id": 7,
+    "user_id": 11,
+    "meeting_id": 2,
+    "accepted": null
+  },
+  {
+    "id": 8,
+    "user_id": 11,
+    "meeting_id": 4,
+    "accepted": false
+  },
+  {
+    "id": 9,
+    "user_id": 11,
+    "meeting_id": 5,
+    "accepted": true
+  }
+]

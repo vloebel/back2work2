@@ -1,0 +1,84 @@
+:root {
+  --link-color: #225ca3;
+  --hover-color: #3486eb;
+  --bg-color: #ccc;
+  --highlight-color: #a4e77e;
+  /* --highlight-color: #657a2a; */
+  --main-bg-color: #ffffff;
+  --alt-bg-color: #dffdd3;
+  --warning-color: #d41414;
+  --warning-hover-color: #ff643d;
+  --basic-white: white;
+  --dark-gray: #333;
+}
+
+* {
+  box-sizing: content-box;
+}
+
+a {
+  color: inherit;
+}
+
+p, li {
+  font: inherit;
+  font-size: initial;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  color: var(--dark-gray);
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  color: #102c3dff;
+  font-size: 100px;
+}
+
+.subhead {
+  text-align: center;
+}
+
+.nav-wrapper {
+  background-color: #7c878eff;
+  font-family: "Montserrat", sans-serif;
+  margin-right: 5px;
+  margin-left: auto;
+}
+
+.page-footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #7c878eff;
+  font-family: "Montserrat", sans-serif;
+}
+
+button, .btn-small, .btn {
+  background-color: #c4752dff !important;
+}
+
+/* used for login and logout button */
+
+.btn-login {
+  margin-left: 15px;
+  display:inline
+}
+
+
+#homepage-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brand-logo {
+  margin-right: 10px;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back2Work</title>
+  <!--Import Google Icon Font - needed for Materialize-->
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- awesome fonts -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <!-- Compiled and minified Materialize CSS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
+  <!-- Oswald font for header -->
+  <link rel="preconnect" href="//fonts.gstatic.com">
+  <link href="//fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+  <!-- Montserrat font for body text -->
+  <link rel="preconnect" href="//fonts.gstatic.com">
+  <link href="//fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+  <!-- Materialize icons -->
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+</head>
+{{!-- called from home-routs.js
+{{loggedIn indicates the user's req.session status--}}
+
+<body>
+  <header>
+    <nav class="nav-wrapper">
+      <div>
+        <a href="/dashboard" class="brand-logo right">Your Dashboard <i class="material-icons">dock</i></a>
+
+        {{!-- The other child of the navbar is either a login or logout button --}}
+        <div class="btn-login">
+          {{#if loggedIn}}
+          {{!-- make a logout button and attach even listener
+          on click, function logout will end the user session --}}
+          <button class="btn waves-effect waves-light" id="logout">Logout</button>
+          <script src="/javascript/logout.js"></script>
+          {{else}}
+          {{!-- make a button that links to the /login route
+          which sets up the user session --}}
+          <a href="/login">
+            <button class="btn waves-effect waves-light" id="login">Login</button>
+          </a>
+          {{/if}}
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Header + body -->
+  <div class="container">
+    <h1> <a href="/">BACK 2 WORK</a> </h1>
+    <p class="subhead"> Meeting with your colleagues made easy.</p>
+    <main>
+      {{{ body }}}
+    </main>
+  </div>
+
+  <!-- Footer -->
+  <footer class="page-footer center">
+    <i class="material-icons small">group</i>
+    <p>Staying organized together!</p>
+    <p>© Back2Work 2021</p>
+  </footer>
+  </div>
+  {{!--
+  {{#if loggedIn}}
+  <script src="/javascript/logout.js"></script>
+  {{/if}} --}}
+
+  <!--Materialize cdn & initialization -->
+  <script src="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>M.AutoInit();</script>
+</body>
+
+</html>

@@ -1,0 +1,104 @@
+{{!-- ADD MEETING CONTROL FLOW
+called from dashboard-routes '/' and login
+----------------------------------------------
+* IN DASHBOARD.HANDLEBARS
+User clicks ADD MEETING BUTTON (dashboard.handlebars)
+This button does not have an event listener - it links to
+dashboard-routes via href="/dashboard/add-meeting"
+* DASHBOARD-ROUTES.JS
+hits the /add-meeting route
+which calls res.render to load ADD-MEETING.HANDLEBARS
+* ADD-MEETING.HANDLEBARS
+builds the NEW-MEETING form & SUBMIT button
+loads the script ADD-MEETING.JS
+* ADD-MEETING.JS
+Adds event listener addMeetingHandler ()
+to the ADD-MEETING.handlebars SUBMIT button
+ON SUBMIT - addMeetingHandler
+LOADS data from the add-meeting.handlebars form and
+POSTS the info to the route: /api/meetings and if response is ok
+RETURNS via document.location.replace('/dashboard');
+--}}
+
+<section>
+  <div>
+    <h4>Meetings you organized</h4>
+   <div id="cancel-button-nanny">
+      {{#each meetingObj}}
+      <div class="row">
+        <div class="col s12 m12 l12">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">{{meeting_name}}</span>
+              <p>{{topic}}</p>
+              <p>DATE: {{date}}</p>
+              <p>TIME: {{start}} </p>
+                <button class="waves-effect waves-light 
+              btn-large orange darken-4 "
+              data-operation="invite"
+              data-meeting={{this.meetingId}}
+              data-organizer={{this.organizerId}}>
+              {{!-- end of button open tag --}}
+              {{!-- followed by the text for the button --}}
+                Manage Invites
+              </button>
+              <button class="waves-effect waves-light 
+              btn-large orange darken-4 "
+              data-operation="cancel"
+              data-meeting={{this.meetingId}}
+              data-organizer={{this.organizerId}}>
+              {{!-- end of button open tag --}}
+              {{!-- followed by the text for the button --}}
+                Cancel Meeting
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+   </div>
+  </div>
+  <div>
+    <h4>Meetings you're invited to</h4>
+
+    {{!-- div id="accept-button-nanny" is used to add an event listener to the buttons via event delegation.  --}}
+ <div  id="accept-button-nanny">
+    {{#each participantObj}}
+    <div class="row">
+      <div class="col s12  m12 l12">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title"> {{meeting_name}}</span>
+            <p>{{topic}}</p>
+            <p>DATE: {{date}}</p>
+            <p>TIME: {{start}} </p>
+        
+            <div><span>RESPONSE:</span>
+            {{!-- store info that was passed into handlebars on the data-attributes for the button so they can be picked up by dashboard.js event handler --}}
+            <button class="waves-effect waves-light 
+              btn-large orange darken-4"
+              data-meeting={{this.meetingId}}
+              data-participant={{this.participantId}}
+              data-status={{this.accepted}}>
+              {{!-- end of button open tag --}}
+              {{!-- followed by the text for the button --}}
+                {{accepted}}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <div>
+    <a href="/dashboard/add-meeting"><button class="waves-effect waves-light btn-large" id="add-meeting">
+        Add Meeting <i class="tiny material-icons">add_circle</i>
+      </button></a>
+
+
+
+  </div>
+  <br>
+  <script src="/javascript/dashboard.js"></script>
+</section>

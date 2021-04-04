@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- This is just a quick document of the possible back-front end interfaces/routes -->
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>API List</title>
+  <style>
+    button {
+      font-weight: bold;
+      display: block;
+      margin: 10px;
+    }
+
+    /* api coding colors for "buttons" */
+    .finished {
+      background-color: darkseagreen;
+    }
+
+    .un {
+      background-color: yellow;
+    }
+
+    .finished-unimplemented {
+      background-color: aquamarine;
+    }
+
+    .finished-unnecessary {
+      background-color: rgb(243, 159, 159);
+
+    }
+
+    .future-function {
+      background-color: rgb(248, 165, 135);
+
+    }
+  </style>
+
+</head>
+
+<body>
+  <section style="width:95%; margin:auto;  background-color:aliceblue">
+    <h2>BACK-END SPECIFICATION</h2>
+    <div>LIST OF api/routes. See code comments for more info
+      The buttons don't work and it's not intended to be part of
+      the deployed project. DOES NOT include home routes or dashboard routes
+    </div>
+    <div>
+      <h3>Color Code:</h3>
+      <button class="finished">FINISHED and IMPLEMENTED</button>
+      <button class="finished-unimplemented">FINISHED but UN-IMPLEMENTED</button>
+      <button class="finished-unnecessary"> FINISHED but UNNECESSARY</button>
+      <button class="future-function">FUTURE FUNCTION</button>
+    </div>
+    <div>
+      <p>
+        The "(MR1), (PR2), etc. values are an index into the corresponding
+        route source file - for example MR1 == meeting-routes MR1.
+      </p>
+    </div>
+    <!-- ------------------------------------------------- -->
+    <h2>API ROUTES: FINISHED and IMPLEMENTED</h2>
+    <!-- ------------------------------------------------- -->
+    <div>
+      <button class="finished">
+        (MR2) FIND ALL MEETINGS by a specified ORGANIZER
+      </button>
+      <ul>
+        <li> dashboard-routes (logged in user)</li>
+      </ul>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished">
+        (MR4) CREATE NEW MEETING
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished">
+        FIND ALL MEETINGS for SELECTED PARTICIPANT</button>
+      <ul>
+        <li> dashboard-routes (logged in user)</li>
+      </ul>
+    </div>
+
+    <!-- -------- -->
+    <div>
+      <button class="finished">
+        (UR3) LOGIN </button>
+
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished">
+        (UR4) LOGOUT
+      </button>
+    </div>
+
+    <!-- -------- -->
+    <div>
+      <button class="finished">
+        (UR5) SIGNUP
+      </button>
+    </div>
+
+    <!-- ------------------------------------------------- -->
+    <h2>API ROUTES: FINISHED but UNIMPLEMENTED</h2>
+    <!-- ------------------------------------------------- -->
+    <div>
+      <button class="finished-unimplemented">
+        GET/SET the Accepted flag for a PARTICIPANT
+      </button>
+    </div>
+    <div>
+      <button class="finished-unimplemented">
+        DELETE a MEETING from a USER
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        DELETE a USER from a MEETING
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        (MR3) FIND ONE MEETING by its meeting id
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        (MR5) UPDATE MEETING by its meeting id
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        (MR6) DELETE MEETING by its ID
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        FIND ALL PARTICIPANTS for SELECTED MEETING
+      </button>
+    </div>
+    <!-- -------- -->
+
+    <div>
+      <button class="finished-unimplemented">
+        ADD PARTICIPANTS TO SELECTED MEETING
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        (UR7) DELETE USER
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        GET PARTICIPANTS based on meeting ID
+
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unimplemented">
+        (UR1) FIND ALL USERS (so we can add to meeting)
+      </button>
+      <!-- -------- -->
+    </div>
+    <div>
+      <button class="finished-unimplemented">
+        ADD ONE USER as PARTICIPANT in selected MEETING
+      </button>
+    </div>
+
+
+    <!-- ------------------------------------------------- -->
+    <h2>FINISHED but probably UNNECESSARY</h2>
+    <!-- ------------------------------------------------- -->
+    <div>
+      <button class="finished-unnecessary">
+        (MR1) FIND ALL MEEETINGS for ALL USERS </button>
+    </div>
+
+    <!-- -------- -->
+    <div>
+      <button class="finished-unnecessary">
+        (UR2) FIND USER by USER id
+      </button>
+
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="finished-unnecessary">
+        (UR6) UPDATE USER INFO by user id
+      </button>
+      <ul>
+        <li>to cahnge user name or password</li>
+      </ul>
+    </div>
+    <!-- -------- -->
+
+    <!-- ------------------------------------------------- -->
+    <h2>FUTURE FUNCTION - no current API Route</h2>
+    <!-- ------------------------------------------------- -->
+    <div>
+      <button class="future-function">
+        Find meeting by date or time
+      </button>
+    </div>
+    <!-- -------- -->
+    <div>
+      <button class="future-function">
+        ADD MULTIPLE USERS as PARTICIPANTS in selected MEETING
+      </button>
+
+    </div>
+    <!-- -------- -->
+
+
+
+
+  </section>
+  <!--JavaScript at end of body for optimized loading-->
+</body>
+
+</html>

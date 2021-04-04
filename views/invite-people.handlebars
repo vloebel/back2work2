@@ -1,0 +1,63 @@
+{{!-- to get here -
+dashboard.handlebard -> dashboard-routes.js -> add-meeting.handlebars
+
+
+PSEUDOCODE:
+Here is the info coming from the meeting-routes.js
+api/meetings/invite/:meeting_id
+meetingObj = {
+organizerId,
+meetingId,
+date,
+start,
+duration,
+meeting_name,
+topic
+}
+mappedParticipantArray[i]={
+participantId,
+meetingId,
+accepted
+}
+
+mappedUserArray[i]={
+id,
+firstname,
+lastname
+}
+--}}
+
+<section>
+  <div>
+  <h2>invite people data dump</h2>
+  <h3>MeetingObj</h3>
+  <ul>
+    <li>organizerId {{organizerId}}</li>
+    <li>meetingId {{ meetingId}}</li>
+    <li>date {{ date}}</li>
+    <li>start {{ start}}</li>
+    <li>duration {{ duration}}</li>
+    <li> meeting_name {{ meeting_name}}</li>
+    <li>topic {{ topic}}</li>
+  </ul>
+</div>
+  <div>
+  <h2>participants</h2>
+    {{#each participantObj}}
+    <ul>
+      <li>participant: {{firstname}} {{lastname}}</li>
+    </ul>
+   {{/each}}
+  </div>
+  <div>
+  <h2>Potential participants (aka users)</h2>
+    {{#each userObj}}
+    <ul>
+      <li>user: {{firstname}} {{lastname}}</li>
+    </ul>
+   {{/each}}
+  </div>
+</section>
+
+
+<script src="/javascript/invite-people.js"></script>
