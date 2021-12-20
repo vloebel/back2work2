@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
+const Op = sequelize.Op;
 // const { json } = require('sequelize/types');
 const { User, Meeting, Participant } = require('../../models');
 const withAuth = require('../../utils/auth');
@@ -235,7 +236,7 @@ router.get('/invite/:id', withAuth, (req, res) => {
                   acceptedStatus = "Declined"
                   break;
               }
-
+              var participantArray = {
                 participantId: element.dataValues.user_id,
                 meetingId: element.dataValues.meeting_id,
                 accepted: acceptedStatus,
